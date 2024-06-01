@@ -37,6 +37,14 @@ export class CryptonomusSDK {
 					sign,
 				},
 			})
+			.catch((e) => {
+				if (e.response) {
+					console.log(e.response.data);
+					console.log(e.response.status);
+					console.log(e.response.headers);
+				}
+				throw new Error(JSON.stringify(e));
+			})
 			.then((r) => r.data);
 	}
 

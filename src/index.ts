@@ -6,6 +6,8 @@ import type {
 	WebhookData,
 } from "./types";
 
+export * as types from "./types";
+
 export class CryptonomusSDK {
 	private http;
 
@@ -44,7 +46,7 @@ export class CryptonomusSDK {
 		return this.makeRequest("payment", options);
 	}
 
-	checkWebhook(data: WebhookData, apiPaymentKey: string): boolean {
+	checkWebhook(data: WebhookData): boolean {
 		const sign = data.sign;
 
 		const { sign: _, ...dataWithoutSign } = data;
@@ -57,7 +59,7 @@ export class CryptonomusSDK {
 		const hash = crypto
 			.createHash("md5")
 			.update(
-				Buffer.from(dataString, "utf-8").toString("base64") + apiPaymentKey,
+				Buffer.from(dataString, "utf-8").toString("base64") + this.apiToken,
 			)
 			.digest("hex");
 

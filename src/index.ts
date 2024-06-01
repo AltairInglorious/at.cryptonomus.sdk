@@ -45,7 +45,12 @@ export class CryptonomusSDK {
 				}
 				throw new Error(JSON.stringify(e));
 			})
-			.then((r) => r.data);
+			.then((r) => {
+				if ("result" in r.data) {
+					return r.data.result;
+				}
+				throw new Error(JSON.stringify(r.data));
+			});
 	}
 
 	async createInvoice(

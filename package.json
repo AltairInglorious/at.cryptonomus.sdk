@@ -1,0 +1,28 @@
+{
+  "name": "at.cryptonomus.sdk",
+  "version": "1.0.3",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AltairInglorious/at.cryptonomus.sdk.git"
+  },
+  "scripts": {
+    "lint": "bunx @biomejs/biome check --apply ./src",
+    "prepublishOnly": "npx tsc"
+  },
+  "author": "amadeustech.dev",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^20.12.12",
+    "axios": "^1.7.2",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.3"
+  }
+}
